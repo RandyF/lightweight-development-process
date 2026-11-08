@@ -1,0 +1,9 @@
+{
+  "servers": {
+    "notebooklm": {
+      "type": "stdio",
+      "command": "/home/randyf/bin/notebooklm-mcp-server",
+      "args": ["server"]
+    }
+  }
+}
