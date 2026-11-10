@@ -25,7 +25,7 @@ flowchart LR
     ST["L2: System Testing"]
 
     CD["L3: Component Definition"]
-    MT["L3: Module Testing"]
+    CT["L3: Component Testing"]
 
     FD["L4: Functional / Technical Definition"]
     UT["L4: Functional / Unit Testing"]
@@ -34,7 +34,7 @@ flowchart LR
 
     PD ~~~ PT
     AD ~~~ ST
-    CD ~~~ MT
+    CD ~~~ CT
     FD ~~~ UT
 
     PD --> AD
@@ -42,18 +42,18 @@ flowchart LR
     CD --> FD
     FD --> IMP
     IMP --> UT
-    UT --> MT
-    MT --> ST
+    UT --> CT
+    CT --> ST
     ST --> PT
 
     PT -. "validates" .-> PD
     ST -. "verifies" .-> AD
-    MT -. "verifies" .-> CD
+    CT -. "verifies" .-> CD
     UT -. "verifies" .-> FD
 
     PD -. "defines" .-> PT
     AD -. "defines" .-> ST
-    CD -. "defines" .-> MT
+    CD -. "defines" .-> CT
     FD -. "defines" .-> UT
 ```
 
@@ -63,7 +63,7 @@ flowchart LR
 | --- | --- | --- | --- | --- |
 | L1 | **Project Description**: what the project is for, what it must do, and how success is measured | **Project Goals Review**: verify project goals and acceptance criteria in operation (First Run) | Project Environment | [01 Project Description & First Run](Project%20Description%20&%20First%20Run.md) |
 | L2 | **Architecture Definition**: how the major parts connect and interact | **System Testing**: verify subsystems work together in a representative setup | Bench / test rig | [02 Architecture Definition & System Testing](Architecture%20Definition%20&%20System%20Testing.md) |
-| L3 | **Component Definition**: how each module or subassembly behaves | **Module Testing**: verify each section with proper signals, loads, and test mocks | Bench / lab setup | [03 Component Definition & Module Testing](Component%20Definition%20&%20Module%20Testing.md) |
+| L3 | **Component Definition**: how each module or subassembly behaves | **Component Testing**: verify each section with proper signals, loads, and test mocks | Bench / lab setup | [03 Component Definition & Component Testing](Component%20Definition%20&%20Component%20Testing.md) |
 | L4 | **Functional Definition** (how it works) / **Technical Definition** (pins, registers, schemas, notes) | **Functional / Unit Testing**: quick checks in code or a test jig | Developer workstation, bench toolchain | [04 Functional-Technical Definition & Unit Testing](Functional%20Technical%20Definition%20&%20Unit%20Testing.md) |
 | — | **Implementation** | — | Workbench, soldering station, GitHub or notes | [05 Implementation](Implementation.md) |
 
@@ -74,11 +74,11 @@ Two terms that sound similar but address distinct quality questions:
 - **Verification**: “Did we build it right?” Does the implementation match its technical definition? Levels L2 through L4 focus on verification.
 - **Validation**: “Did we build the right thing?” Does the finished project actually solve the user's need in the real world? The L1 Project Goals Review focuses on validation.
 
-A build can pass every unit, module, and system test and still fail validation if the goal was flawed or too vague. For this reason, L1 checks evaluate the build against the actual operating use case, not just the component specs or code.
+A build can pass every unit, component, and system test and still fail validation if the goal was flawed or too vague. For this reason, L1 checks evaluate the build against the actual operating use case, not just the component specs or code.
 
 ## Feedback: The V Is Not One-Way
 
-In practice, you will discover problems while working at a lower level. For example, a module test on the bench may reveal that a component definition was ambiguous. When that happens:
+In practice, you will discover problems while working at a lower level. For example, a component test on the bench may reveal that a component definition was ambiguous. When that happens:
 
 - **Fix the definition at the level where the problem was introduced**, not just how the design was implemented.
 - If the fix changes a parent definition's intent, update the parent definition and evaluate its impact across related subsystems.
@@ -92,17 +92,17 @@ Running the full V for a one-line bug fix would be wasteful. A change **enters t
 
 | Change Type | Example | Enters at | Must pass |
 | --- | --- | --- | --- |
-| New project feature | Add an automatic fan mode when temperature rises | L1 Project Description | All levels (L4 Unit, L3 Module, L2 System, and L1 Project Goals Review) |
-| Cross-module change with no visible user change | Move a calculation from one microcontroller board to another | L2 Architecture | L4 Unit, L3 Module, and L2 System tests, plus L1 regression check |
-| Change confined to one module | Retune a control loop or sensor filter | L3 Component | L4 Unit and L3 Module tests, plus L2 System and L1 smoke checks |
-| Change confined to one function | Fix an off-by-one error in a debounce counter | L4 Functional | L4 Unit tests, plus L3 Module regression and L2/L1 smoke checks |
+| New project feature | Add an automatic fan mode when temperature rises | L1 Project Description | All levels (L4 Unit, L3 Component, L2 System, and L1 Project Goals Review) |
+| Cross-component change with no visible user change | Move a calculation from one microcontroller board to another | L2 Architecture | L4 Unit, L3 Component, and L2 System tests, plus L1 regression check |
+| Change confined to one component | Retune a control loop or sensor filter | L3 Component | L4 Unit and L3 Component tests, plus L2 System and L1 smoke checks |
+| Change confined to one function | Fix an off-by-one error in a debounce counter | L4 Functional | L4 Unit tests, plus L3 Component regression and L2/L1 smoke checks |
 | Calibration value change only | Adjust a threshold constant | L4 Technical (update constant + rationale) | L4 Unit tests, plus targeted L3/L2 sanity checks |
 
 When in doubt, enter one level higher than you think you need.
 
 ## Decomposition and Traceability
 
-Each level **fans out** into the next. One Project Description may produce one or more Architecture Definitions. Each of those names several modules, and each module owns several functions. Every note or document links to its **parent** (the item it helps satisfy) and its **children** (the items that satisfy it). Every definition also links to the **test cases** that verify it. This keeps the project understandable without turning it into a paperwork project.
+Each level **fans out** into the next. One Project Description may produce one or more Architecture Definitions. Each of those names several components, and each component owns several functions. Every note or document links to its **parent** (the item it helps satisfy) and its **children** (the items that satisfy it). Every definition also links to the **test cases** that verify it. This keeps the project understandable without turning it into a paperwork project.
 
 ```mermaid
 graph TD
@@ -127,7 +127,7 @@ graph TD
 
     PT(["L1: Project Goals Review Plan"]) -.-> PD
     ST(["L2: System Test Cases"]) -.-> AD1
-    MT(["L3: Module Test Cases"]) -.-> CD1
+    CT(["L3: Component Test Cases"]) -.-> CD1
     UT(["L4: Unit Test Cases"]) -.-> FD1
 ```
 

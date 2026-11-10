@@ -13,7 +13,7 @@ Every interaction, failure mode, and constraint listed in the Architecture Defin
 flowchart LR
     AD["L2: Architecture Definition<br/>(Subsystems, Interfaces, Data Flows)"]
     IMP["L3–L4 Design & Build<br/>(Component Modules, Circuits, Code)"]
-    ST["L2: System Testing<br/>(Bench Integration & Multi-Module Tests)"]
+    ST["L2: System Testing<br/>(Bench Integration & Multi-Component Tests)"]
 
     AD -->|Decomposes into| IMP
     IMP -->|Integrates into| ST
@@ -164,7 +164,7 @@ Write the System Test Plan during the architecture phase. This ensures that test
 
 Before beginning System Testing, verify these prerequisites:
 - [ ] Architecture Definition completed and approved, including the System Test Plan.
-- [ ] All child Component Definitions (L3) have passed Module Testing on the bench.
+- [ ] All child Component Definitions (L3) have passed Component Testing on the bench.
 - [ ] Microcontrollers flashed with current baseline firmware.
 - [ ] Workbench wiring, power supplies, and test instrumentation ready.
 - [ ] Diagnostic tools (serial monitor, network packet viewer) active.

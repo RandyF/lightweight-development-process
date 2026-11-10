@@ -1,160 +1,138 @@
 # Component Definition Template
 
-*Use this template to define a single component or module at Level 3 (L3) of the lightweight V-Model. The Component Definition describes how one component carries out its assigned job from the parent Architecture Definition. It defines responsibilities, interfaces, runtime timing, and state behavior in isolation before detailed coding begins.*
+*Use this template to define a single component, physical assembly, or trade at Level 3 (L3) of the lightweight V-Model. The Component Definition describes how one part of your build carries out its assigned job from the parent Architecture Definition. It sets responsibilities, physical interfaces, material rules, and installation standards in isolation before final assembly.*
 
 ---
 
 # [Component Name]
 
-- **Document ID:** CD-[XXX] (e.g., `CD-001` or `CD-TEMP-NODE`)
+- **Document ID:** CD-[XXX] (e.g., `CD-004: Shower Waterproofing Pan` or `CD-002: Sensor Node`)
 - **Parent Architecture:** [AD-XXX: Architecture Definition Name]
 - **Parent Project:** [PD-XXX: Project Definition Name]
+- **Component Domain:** [Physical Trade / Mechanical Assembly / Electrical Circuit / Software Module]
 - **Author / Builder:** [Name]
-- **Status:** [Draft | In Review | In Progress | In Module Testing | Complete]
+- **Status:** [Draft | In Review | In Rough-in / Fabrication | In Component Testing | Complete]
 - **Target Date:** [YYYY-MM-DD]
 
 ---
 
-## 1. Component Overview
+## 1. Component Overview & Scope
 
 *Provide a brief summary of this component. Explain what it is, why it exists as a separate piece, and which part of the system architecture it fulfills.*
 
 - **Component Purpose:** [Summarize what this component does in 1–2 sentences.]
-- **Role in the Architecture:** [Explain how this component interacts with peer modules or the parent architecture.]
+- **Role in the Architecture:** [Explain how this component connects to surrounding parts or trades in the parent architecture.]
 
 ---
 
-## 2. Physical & Logical Placement
+## 2. Physical Location & Boundaries
 
-*Specify where this component lives physically and logically.*
+*Specify where this component lives physically and where its boundaries begin and end.*
 
-- **Hardware Target / Board:** [e.g., ESP32-C3 development board, Raspberry Pi, Arduino Nano, custom PCB.]
-- **Physical Location / Enclosure:** [e.g., North patio weatherproof box, upstairs hallway wall mount, bench test chassis.]
-- **Software Runtime / Environment:** [e.g., Bare-metal C/C++, FreeRTOS task, ESPHome firmware, Python daemon.]
-
----
-
-## 3. Component Responsibilities
-
-*List the specific functions and behaviors this component owns. Each numbered responsibility will decompose into one or more child Functional Definitions (Level 4).*
-
-1. **[RESP-1]:** [Primary function, e.g., Sample analog thermistor voltage and battery voltage divider on scheduled wake intervals.]
-2. **[RESP-2]:** [Data processing function, e.g., Convert raw ADC counts into calibrated temperature (°C) and battery voltage (V).]
-3. **[RESP-3]:** [Fault handling function, e.g., Detect sensor probe disconnects and out-of-range ADC readings.]
-4. **[RESP-4]:** [Communication function, e.g., Format sensor readings into a structured JSON telemetry payload.]
-5. **[RESP-5]:** [Power management function, e.g., Manage low-power deep sleep cycles and wake timers.]
+- **Physical Location / Zone:** [e.g., Master bathroom shower floor area (36 in x 48 in footprint), North patio exterior wall, workshop bench frame.]
+- **Component Boundaries:** [Define what belongs to this component versus adjacent components. e.g., "Includes shower pan liner and clamping drain; does not include vertical backerboard or wall tile."]
 
 ---
 
-## 4. Interfaces (Inputs & Outputs)
+## 3. Component Responsibilities & Performance Criteria
 
-*List every signal, message, and communication line crossing this component boundary. Always specify units, signal types, and directions.*
+*List the specific functions, structural standards, or performance criteria this component owns. Each numbered responsibility will decompose into one or more child Functional Definitions (Level 4).*
 
-| Interface ID | Interface Name | Direction | Type / Protocol | Units / Data Format | Connected To |
-| --- | --- | --- | --- | --- | --- |
-| **IF-01** | `[e.g., ADC_CH0_THERM]` | Input | Analog Pin | 0–3.3 V (12-bit raw ADC count) | [Thermistor voltage divider] |
-| **IF-02** | `[e.g., ADC_CH1_BATT]` | Input | Analog Pin | 0–3.3 V (scaled battery voltage) | [Battery divider circuit] |
-| **IF-03** | `[e.g., RTC_WAKE_TIMER]` | Input | Hardware Timer | Milliseconds / periodic (60 s) | [Internal RTC timer] |
-| **IF-04** | `[e.g., MQTT_TELEMETRY]` | Output | Wi-Fi / MQTT | JSON string (`temp_c`, `battery_v`) | [Local MQTT broker] |
-| **IF-05** | `[e.g., STATUS_LED]` | Output | Digital GPIO | High / Low (blink pulse) | [Onboard diagnostic LED] |
+1. **[RESP-1]:** [Primary function, e.g., Form a 100% watertight basin to contain daily shower water.]
+2. **[RESP-2]:** [Slope / dimensional criteria, e.g., Maintain a continuous pre-slope of at least 1/4 inch per foot toward the central drain.]
+3. **[RESP-3]:** [Boundary overlap, e.g., Extend waterproof barrier at least 6 inches up all surrounding wall studs and over the curb.]
+4. **[RESP-4]:** [Structural / load criteria, e.g., Provide a sound, deflection-free bonding surface for floor tile.]
+5. **[RESP-5]:** [Durability / safety, e.g., Withstand normal foot traffic without puncturing or tearing the membrane.]
 
 ---
 
-## 5. Hardware & Software Dependencies
+## 4. Interfaces & Connections
 
-*Identify all required external libraries, hardware drivers, and physical peripherals.*
+*List every physical joint, pipe fitting, electrical terminal, or communication line crossing this component boundary. Always specify dimensions, thread types, and ratings.*
 
-- **Hardware Peripherals:** [e.g., Internal 12-bit ADC, RTC timer, Wi-Fi radio, onboard LED.]
-- **External Modules / Sensors:** [e.g., 10k NTC thermistor probe, 18650 battery holder, 3.3V LDO regulator.]
-- **Software Libraries & Drivers:** [e.g., ESP-IDF Wi-Fi driver, PubSubClient MQTT library, Arduino core.]
-
----
-
-## 6. Runtime & Timing Configuration
-
-*Specify task scheduling, loop rates, sleep timers, and execution windows.*
-
-- **Execution Model:** [e.g., Single-threaded loop, FreeRTOS task, event-driven interrupt handler.]
-- **Operating Timing & Intervals:**
-  - *Active Wake Duration:* [e.g., Maximum 2.5 seconds per wake cycle.]
-  - *Sleep Interval:* [e.g., 60 seconds in deep sleep between samples.]
-  - *Sample Read Time:* [e.g., 100 ms average over 10 ADC readings.]
-- **Task Priorities (if using an RTOS):** [e.g., Main sensor task priority 5, network task priority 10.]
+| Interface ID | Interface Name | Connection Type | Dimensions / Ratings / Units | Connects To |
+| --- | --- | --- | --- | --- |
+| **IF-01** | `[e.g., Central Drain Connection]` | Mechanical clamping flange | 2-inch Schedule 40 PVC | [Household waste stack] |
+| **IF-02** | `[e.g., Wall Stud Overlap]` | Physical overlap joint | >= 6 inches vertical overlap | [Cement backerboard] |
+| **IF-03** | `[e.g., Shower Curb Interface]` | Membrane wrap | Fully wrapped over curb core | [Bathroom subfloor] |
+| **IF-04** | `[e.g., Electrical Feed (if applicable)]` | Hardwired terminal | 12/2 NM-B Romex, 20A 120V | [Branch circuit junction box] |
 
 ---
 
-## 7. Resource Constraints
+## 5. Materials, Parts & Specifications
 
-*Document memory, power, and bandwidth ceilings allocated to this component from Level 2.*
+*Identify all required lumber grades, pipe schedules, wire gauges, or component breakout boards.*
 
-- **Memory Ceiling:** [e.g., Maximum 16 KB RAM allocation; no dynamic memory allocation inside main loop.]
-- **Power & Current Budget:**
-  - *Peak Active Current:* [e.g., Maximum 300 mA during Wi-Fi transmission.]
-  - *Deep Sleep Current:* [e.g., Maximum 25 microamps in deep sleep.]
-  - *Target Battery Lifespan:* [e.g., At least 6 months on a single 2500 mAh 18650 cell.]
-- **Message Size Limits:** [e.g., JSON payload size strictly under 128 bytes.]
+- **Core Structural Materials:** [e.g., 40-mil PVC pan liner, pre-slope sand-and-cement mortar bed, 2x4 framing lumber.]
+- **Fittings & Hardware:** [e.g., 2-inch PVC clamping shower drain with stainless steel bolts, silicone sealant.]
+- **Required Tools for Assembly:** [e.g., Level, margin trowel, PVC solvent weld and primer, mechanical test plug.]
 
 ---
 
-## 8. Summary State Model
+## 6. Installation Rules, Tolerances & Critical Constraints
 
-*List the top-level operating states for this component. Leave detailed transition formulas and bit-level guards to Level 4.*
+*Document non-negotiable building codes, slope rules, fastener spacing, torque specs, or cure times.*
 
-```mermaid
-stateDiagram-v2
-    [*] --> BOOT
-    BOOT --> SAMPLE: Init OK
-    BOOT --> FAULT: Hardware Error
-    SAMPLE --> TRANSMIT: Readings Valid
-    SAMPLE --> FAULT: Probe Disconnected
-    TRANSMIT --> SLEEP: Publish OK / Timeout
-    FAULT --> SLEEP: Error Handled
-    SLEEP --> BOOT: Wake Timer Expired
-```
-
-- **`BOOT`**: [Power-on initialization, pin configuration, and hardware self-test.]
-- **`SAMPLE`**: [Read analog pins, convert raw counts to calibrated units, validate readings.]
-- **`TRANSMIT`**: [Connect to network, publish formatted telemetry payload.]
-- **`SLEEP`**: [Disable peripherals, configure wake timer, enter low-power deep sleep.]
-- **`FAULT`**: [Flag error condition, flash diagnostic LED, prepare error payload.]
+- **Slope & Alignment Rules:** [e.g., Pre-slope must be minimum 1/4 inch per foot from perimeter to drain; pan must be level along curb top.]
+- **Fastening & Penetration Rules:** [e.g., No nails or screws through the pan liner below 3 inches above the curb top.]
+- **Cure Times & Environmental Limits:** [e.g., Allow mortar bed to cure for 24 hours before performing flood test.]
 
 ---
 
-## 9. Module Test Plan (Right Side of the V)
+## 7. Safety & Hazard Precautions
 
-*Outline how this component will be tested in isolation on the workbench before connecting to the full system. Every responsibility and interface must be verified.*
+*List safety precautions specific to this module during fabrication, assembly, and testing.*
 
-### Test Bench Environment Setup
-- **Hardware on Bench:** [Component board, breadboard wiring, bench power supply, multimeter.]
-- **Simulated Test Inputs:** [Potentiometer to simulate sensor voltages, adjustable supply to simulate battery drain.]
-- **Test Host & Monitoring:** [PC with serial monitor terminal, local test MQTT broker.]
+- [ ] **Water & Pressure Hazards:** [e.g., Verify main water shutoff valve is operable before testing plumbing.]
+- [ ] **Chemical & Fume Safety:** [e.g., Provide open-window ventilation when applying PVC solvent primer and silicone.]
+- [ ] **Electrical Isolation:** [e.g., Confirm breaker is locked out before working near electrical junction boxes.]
+- [ ] **PPE Requirements:** [e.g., Wear safety glasses, dust mask during mortar mixing, and work gloves.]
+
+---
+
+## 8. Component Lifecycle & Build Stages
+
+*Identify the build stages for this component. For physical builds, show progress from rough-in to finish.*
+
+- **`ROUGH-IN`**: [Initial framing, pre-slope mortar bed placed, drain flange mounted.]
+- **`INSPECTION & TEST`**: [Drain plugged, 24-hour standing water flood test performed.]
+- **`ENCLOSED`**: [Final mortar bed poured, backerboard installed over liner apron.]
+- **`FINISHED`**: [Tile set, grouted, and silicone expansion joints caulked.]
+
+---
+
+## 9. Component Test Plan (Right Side of the V)
+
+*Outline how this component will be tested in isolation before connecting to the full project or closing walls. Every responsibility must be verified.*
+
+### Test Setup & Equipment
+- **Test Equipment:** [e.g., Mechanical 2-inch rubber test plug, clean water supply, measuring tape, moisture meter.]
+- **Test Location:** [Shower pan rough-in area before hanging wall backerboard.]
 
 ### Entry Criteria
-- [ ] Child Functional and Technical Definitions (L4) drafted and verified.
-- [ ] Component Definition completed and reviewed.
-- [ ] Test bench inputs (potentiometer, bench supply) connected.
+- [ ] Pan liner and clamping drain installed per manufacturer instructions.
+- [ ] Corner dams folded and sealed with approved adhesive.
+- [ ] Drain test plug inserted and expanded tightly.
 
 ### Exit Criteria
-- [ ] Every responsibility (`RESP-1` to `RESP-5`) verified with at least one passing test case.
-- [ ] Every interface verified with correct units and signal levels.
-- [ ] Fault injection tests (open circuit, low battery, network drop) pass safely.
-- [ ] Active wake duration and sleep current meet numeric targets.
+- [ ] Zero drop in water level over 24 hours (excluding minor evaporation under 1/16 inch).
+- [ ] Zero moisture detected on subfloor or framing below the shower.
+- [ ] Test signed off and photographed before any mortar or tile is installed.
 
-### Module Test Cases
+### Component Test Cases
 
 | Test ID | Verifies (RESP / IF) | Test Procedure Summary | Expected Result | Pass / Fail |
 | --- | --- | --- | --- | --- |
-| **MT-001** | [RESP-1, IF-01] | [Sweep input potentiometer from 0 V to 3.3 V; observe serial output.] | [Reported ADC counts match input voltage across full range.] | [ ] |
-| **MT-002** | [RESP-2] | [Supply known voltage corresponding to 25 °C; check temperature output.] | [Reported temperature reads 25.0 °C ±0.3 °C.] | [ ] |
-| **MT-003** | [RESP-3, IF-05] | [Disconnect analog sensor wire to simulate open circuit.] | [Node flags probe fault, sets status LED, publishes error payload.] | [ ] |
-| **MT-004** | [RESP-5] | [Measure sleep current with multimeter while node is in SLEEP state.] | [Current drops to <= 25 microamps; node wakes after 60 seconds.] | [ ] |
+| **CT-001** | [RESP-1, IF-01] | [Insert test plug into drain. Fill pan with water to 1/2 in below curb top. Mark line with tape. Wait 24 h.] | [Water level holds with zero drop; framing below stays 100% dry.] | [ ] |
+| **CT-002** | [RESP-2] | [Check slope from corners to drain using a digital torpedo level.] | [Slope reads >= 1/4 inch per foot across all quadrants.] | [ ] |
+| **CT-003** | [RESP-3, IF-02] | [Measure height of membrane above curb top around all three walls.] | [Membrane height is >= 6 inches above curb line.] | [ ] |
 
 ---
 
-## 10. Early Technical Notes (Scratchpad for L4 Functional & Technical Definitions)
+## 10. Early Technical Notes (Scratchpad for Level 4)
 
-*Do not put line-by-line code algorithms, register bitmasks, or circuit trace details into the component sections above. Jot down early technical thoughts here for the Level 4 phase.*
+*Do not put detailed cut lists, individual screw counts, or minute tile layouts in the component sections above. Record early technical details here for the Level 4 phase.*
 
-- *Algorithm Ideas:* [e.g., Use Steinhart-Hart equation or beta parameter equation (beta = 3950) for thermistor conversion.]
-- *Register & Pin Notes:* [e.g., Use ADC1 Channel 0 (GPIO 0) because ADC2 conflicts with Wi-Fi on ESP32 chips.]
-- *Filter Thoughts:* [e.g., Take 10 ADC samples with 5 ms delay, discard min/max, average remaining 8.]
+- *Cut Dimensions:* [e.g., Pan liner cut size 5 ft x 6 ft to allow 10-inch turn-ups on all sides.]
+- *Mortar Ratios:* [e.g., 4 parts sand to 1 part Portland cement mixed to damp sand consistency.]
+- *Detailed Fastener Specs:* [e.g., 1-1/4 inch hot-dipped galvanized roofing nails along top edge only.]

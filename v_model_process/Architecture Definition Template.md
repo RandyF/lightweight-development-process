@@ -161,7 +161,7 @@ sequenceDiagram
 
 ### Entry Criteria
 - [ ] Architecture Definition completed and reviewed.
-- [ ] Child Component Definitions (L3) completed and verified in module bench tests.
+- [ ] Child Component Definitions (L3) completed and verified in component bench tests.
 - [ ] Baseline firmware flashed to prototype hardware.
 - [ ] Test bench instrumentation (serial monitors, current meters) connected.
 
