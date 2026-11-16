@@ -61,10 +61,10 @@ flowchart LR
 
 | Level | Left Side (Definition) | Right Side (Testing) | Environment | Page |
 | --- | --- | --- | --- | --- |
-| L1 | **Project Description**: what the project is for, what it must do, and how success is measured | **Project Goals Review**: verify project goals and acceptance criteria in operation (First Run) | Project Environment | [01 Project Description & First Run](Project%20Description%20&%20First%20Run.md) |
+| L1 | **Project Definition**: what the project is for, what it must do, and how success is measured | **Project Goals Review**: verify project goals and acceptance criteria in operation (First Run) | Project Environment | [01 Project Definition & Project Goals Review](Project%20Definition%20&%20Project%20Goals%20Review.md) |
 | L2 | **Architecture Definition**: how the major parts connect and interact | **System Testing**: verify subsystems work together in a representative setup | Bench / test rig | [02 Architecture Definition & System Testing](Architecture%20Definition%20&%20System%20Testing.md) |
 | L3 | **Component Definition**: how each module or subassembly behaves | **Component Testing**: verify each section with proper signals, loads, and test mocks | Bench / lab setup | [03 Component Definition & Component Testing](Component%20Definition%20&%20Component%20Testing.md) |
-| L4 | **Functional Definition** (how it works) / **Technical Definition** (pins, registers, schemas, notes) | **Functional / Unit Testing**: quick checks in code or a test jig | Developer workstation, bench toolchain | [04 Functional-Technical Definition & Unit Testing](Functional%20Technical%20Definition%20&%20Unit%20Testing.md) |
+| L4 | **Functional Definition** (how it works) / **Technical Definition** (pins, registers, schemas, notes) | **Functional / Unit Testing**: quick checks in code or a test jig | Developer workstation, bench toolchain | [04 Functional & Technical Definition & Unit Testing](Functional%20&%20Technical%20Definition%20&%20Unit%20Testing.md) |
 | — | **Implementation** | — | Workbench, soldering station, GitHub or notes | [05 Implementation](Implementation.md) |
 
 ## Verification vs. Validation
