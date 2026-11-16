@@ -10,6 +10,8 @@ This project maintains a heirarchy of Project Development guideline documents, t
 - Keep `AGENTS.md` updated when introducing new top-level directories.
 - Write documents and copy to the 10th Grade reading level with an instructional tone, minimize conversational text.
 - Feel free to use Mermaid diagrams when it makes sense.
+- Attempt to limit generating documentation based on assumtions, extrapolation, or hallucination.
+    - When creating new documents from sparse prompts, couch any assumptions or extrapolation with "[suggested]"
 
 ## Architecture Map & Context Index
 - `/v_model_process` -> Project Development documentation
