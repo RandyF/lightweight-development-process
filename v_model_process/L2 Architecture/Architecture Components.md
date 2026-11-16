@@ -28,7 +28,7 @@ flowchart LR
 | --- | --- |
 | Small project with fewer than 10 parts | A single table inside the Architecture Definition document (Section 4: Component Decomposition) is sufficient. No separate document needed. |
 | Medium project with 10–30 parts across several systems | A standalone Architecture Components list (this document format) keeps things organized without adding weight. |
-| Large or multi-phase project with many trades, systems, or subassemblies | A standalone document plus individual Architecture Component Definition sheets for complex sub-component trees. A template is provided for this case. |
+| Large or multi-phase project with many trades, systems, or subassemblies | A standalone document plus individual Architecture Component Definition sheets for complex sub-component trees using the [Architecture Component Definition Template](Architecture%20Component%20Definition%20Template.md). |
 
 ---
 
@@ -173,7 +173,7 @@ Understanding where architecture components appear — and where they do not —
 
 For most hobby and small DIY projects, the architecture components list works best as a **single table** (like the examples above) kept inside or alongside the Architecture Definition. This avoids creating extra documents for projects with a manageable number of parts.
 
-When a project grows large enough that individual components have complex sub-component trees, multiple trades, or need their own revision tracking, use the **Architecture Component Definition Template** to create a focused sheet per component. This template provides structured sections for sub-component breakdown, interface details, and relevant codes or standards.
+When a project grows large enough that individual components have complex sub-component trees, multiple trades, or need their own revision tracking, use the [Architecture Component Definition Template](Architecture%20Component%20Definition%20Template.md) to create a focused sheet per component. This template provides structured sections for sub-component breakdown, interface details, and relevant codes or standards.
 
 ### Decision Guide
 

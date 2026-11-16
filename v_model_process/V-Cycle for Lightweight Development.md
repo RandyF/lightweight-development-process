@@ -59,13 +59,13 @@ flowchart LR
 
 ## The Levels
 
-| Level | Left Side (Definition) | Right Side (Testing) | Environment | Page |
+| Level | Left Side (Definition) | Right Side (Testing) | Environment | Reference Document |
 | --- | --- | --- | --- | --- |
-| L1 | **Project Definition**: what the project is for, what it must do, and how success is measured | **Project Goals Review**: verify project goals and acceptance criteria in operation (First Run) | Project Environment | [01 Project Definition & Project Goals Review](Project%20Definition%20&%20Project%20Goals%20Review.md) |
-| L2 | **Architecture Definition**: how the major parts connect and interact | **System Testing**: verify subsystems work together in a representative setup | Bench / test rig | [02 Architecture Definition & System Testing](Architecture%20Definition%20&%20System%20Testing.md) |
-| L3 | **Component Definition**: how each module or subassembly behaves | **Component Testing**: verify each section with proper signals, loads, and test mocks | Bench / lab setup | [03 Component Definition & Component Testing](Component%20Definition%20&%20Component%20Testing.md) |
-| L4 | **Functional Definition** (how it works) / **Technical Definition** (pins, registers, schemas, notes) | **Functional / Unit Testing**: quick checks in code or a test jig | Developer workstation, bench toolchain | [04 Functional & Technical Definition & Unit Testing](Functional%20&%20Technical%20Definition%20&%20Unit%20Testing.md) |
-| — | **Implementation** | — | Workbench, soldering station, GitHub or notes | [05 Implementation](Implementation.md) |
+| L1 | **Project Definition**: what the project is for, what it must do, and how success is measured | **Project Goals Review**: verify project goals and acceptance criteria in operation (First Run) | Project Operating Setting | [Project Definition & Project Goals Review](L1%20Project/Project%20Definition%20&%20Project%20Goals%20Review.md) |
+| L2 | **Architecture Definition**: how the major parts connect, partition, and interact | **System Testing**: verify subsystems work together on the test bench | Bench / prototype test rig | [Architecture Definition & System Testing](L2%20Architecture/Architecture%20Definition%20&%20System%20Testing.md) |
+| L3 | **Component Definition**: how each module, assembly, or trade behaves | **Component Testing**: verify each section with proper signals, loads, and test mocks | Bench / assembly space | [Component Definition & Component Testing](L3%20Component/Component%20Definition%20&%20Component%20Testing.md) |
+| L4 | **Functional / Technical Definition**: detailed behavioral statements, formulas, and exact schemas | **Unit Testing**: isolated checks of single routines, cuts, or circuit blocks | Developer workstation / test jig | [Functional & Technical Definition & Unit Testing](L4L5%20Function%20Technical%20Implementation/Functional%20&%20Technical%20Definition%20&%20Unit%20Testing.md) |
+| L5 | **Implementation**: physical fabrication, circuit wiring, and code compilation | — | Workbench / soldering station / IDE | [Implementation](L4L5%20Function%20Technical%20Implementation/Implementation.md) |
 
 ## Verification vs. Validation
 
@@ -105,7 +105,7 @@ When in doubt, enter one level higher than you think you need.
 Each level **fans out** into the next. One Project Description may produce one or more Architecture Definitions. Each of those names several components, and each component owns several functions. Every note or document links to its **parent** (the item it helps satisfy) and its **children** (the items that satisfy it). Every definition also links to the **test cases** that verify it. This keeps the project understandable without turning it into a paperwork project.
 
 ```mermaid
-graph TD
+flowchart TD
     PD["Project Description<br/>e.g. Home Temperature Monitor"]
     AD1["Architecture Definition<br/>Sensor Network & Telemetry Architecture"]
     CD1["Component Definition<br/>Outdoor Temperature Sensor Probe"]
@@ -136,6 +136,6 @@ graph TD
 1. Every definition below L1 has exactly one parent at the level above.
 2. Every definition has at least one test case at its own level. If you cannot write a test for it, the definition is not precise enough yet.
 3. Every test case references the definition it verifies. It does not reference a higher- or lower-level definition.
-4. Every pull request or commit references the requirement ID(s) it implements (for example, `REQ-TEMP-01`).
+4. Every pull request, commit, or build step references the requirement ID it satisfies (such as `AC-1`, `INT-1`, `RESP-1`, or `FD-TEMP-01.1`).
 
 Using these rules, anyone can start from a line of code or a wiring change and trace it back to the project goal it serves. They can also start from the project goal and find the checks that prove it was met.

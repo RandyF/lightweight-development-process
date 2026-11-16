@@ -1,16 +1,24 @@
-# Agent Guidelines - Workspace Orientation
+# Agent Guidelines - Workspace Orientation: V-Model Process
 
 ## Workspace Overview
-This folder structure provides a set of rules and documentation framework structures for managing a hobby, DIY, or small project using processes and practices derived from embedded engineering.
+This directory contains reference documentation, templates, and process guidelines for executing hobby, DIY, maker, and small-scale engineering projects. The framework adapts the systems engineering V-Model into a lightweight, practical lifecycle designed to minimize rework, eliminate unverified assumptions, and enforce clear verification and validation contracts.
 
 ## Core Rules & Invariants
-- These are REFERENCE documents to be used as a ruleset for other projects, these are not intended to be overall project documents.
-- When building task context, only traverse into folders required for the task - e.g. if creating a Component Definition Document at L3, do not traverse into the L4L5 folder to bring those rules into context.
-- Unless you are an AGENT specificatlly tasked with editing the v_model_process documents, do not modify any of the files herein.
-- Keep `AGENTS.md` updated when introducing new top-level directories.
+- **Reference-Only Documentation:** The documents in this directory define the rules, structures, and templates for managing external projects. Do not treat these files as project-specific project deliverables.
+- **Context Isolation:** When building agent task context, traverse only into the directories relevant to the current lifecycle level. For example, when authoring an L3 Component Definition, do not ingest L4/L5 files unless explicitly requested.
+- **Tone and Reading Level:** Write all documentation to a 10th-grade reading level using an instructional, declarative tone. Eliminate conversational fillers, informal idioms, and vague generalities.
+- **Traceability Discipline:** Every requirement, interface, failure mode, and test case must use its standardized prefix ID:
+  - **L1 Project:** `PD-000` (Master Project), `PD-xxx` (Project Definition), `AC-n` (Acceptance Criteria), `PGR` (Project Goals Review / Validation)
+  - **L2 Architecture:** `AD-xxx` (Architecture Definition), `INT-n` (Interactions / Data Flows), `FM-n` (Failure Modes), `NFR-n` (Non-Functional Requirements), `ST-nnn` (System Tests)
+  - **L3 Component:** `CD-xxx` (Component Definition), `RESP-n` (Responsibilities), `IF-nn` (Interfaces), `CT-nnn` (Component Tests)
+  - **L4/L5 Functional & Technical Implementation:** `FD-xxx` (Functional Definition), `FD-xxx-n.n` (Functional Statements), `TD-xxx` (Technical Definition), `TV-nn` (Test Vectors), `BM-nn` (Inspection Benchmarks), `UT-nnn` (Unit Tests), `IMP` (Implementation Records)
+- **Visual Models:** Use Mermaid diagrams (`flowchart`, `sequenceDiagram`, `stateDiagram-v2`) to illustrate system boundaries, sequencing, and decomposition.
+- **Grounded Content:** Avoid assumptions, unverified claims, or undocumented external services. Couch necessary design assumptions with `[suggested]`.
+- **Directory Maintenance:** Keep directory-level `AGENTS.md` files updated whenever adding, renaming, or re-scoping files.
 
 ## Architecture Map & Context Index
-- `/L1 Project` -> Project Description Process Documentation
-- `/L2 Architecture` -> Architecture Description Process Documentation
-- `/L3 Comoponent` -> Component Level Process Documentation
-- `/L4L5 Function Technical Implementation` -> Function, Technical, and Implementaiton Process Docuemntation
+- `V-Cycle for Lightweight Development.md` -> Master lifecycle overview, level decomposition, tailoring matrix, and traceability principles.
+- `/L1 Project` -> Top-level project definition, scope boundaries, user acceptance criteria, and operational validation (Project Goals Review).
+- `/L2 Architecture` -> System decomposition, subsystem boundaries, data flows, interface definitions, failure modes, and system integration testing.
+- `/L3 Component` -> Isolated component, module, or trade definitions, physical interfaces, material specifications, and component proof testing.
+- `/L4L5 Function Technical Implementation` -> Low-level functional logic, exact technical specifications, fabrication/coding implementation guidelines, and unit testing.
