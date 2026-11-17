@@ -12,6 +12,7 @@ This directory contains reference documentation, templates, and process guidelin
   - **L2 Architecture:** `AD-xxx` (Architecture Definition), `INT-n` (Interactions / Data Flows), `FM-n` (Failure Modes), `NFR-n` (Non-Functional Requirements), `ST-nnn` (System Tests)
   - **L3 Component:** `CD-xxx` (Component Definition), `RESP-n` (Responsibilities), `IF-nn` (Interfaces), `CT-nnn` (Component Tests)
   - **L4/L5 Functional & Technical Implementation:** `FD-xxx` (Functional Definition), `FD-xxx-n.n` (Functional Statements), `TD-xxx` (Technical Definition), `TV-nn` (Test Vectors), `BM-nn` (Inspection Benchmarks), `UT-nnn` (Unit Tests), `IMP` (Implementation Records)
+- **Standard Formatting** Use Markdown for all requirements formatting unless otherwise specified.
 - **Visual Models:** Use Mermaid diagrams (`flowchart`, `sequenceDiagram`, `stateDiagram-v2`) to illustrate system boundaries, sequencing, and decomposition.
 - **Grounded Content:** Avoid assumptions, unverified claims, or undocumented external services. Couch necessary design assumptions with `[suggested]`.
 - **Directory Maintenance:** Keep directory-level `AGENTS.md` files updated whenever adding, renaming, or re-scoping files.
